@@ -22,8 +22,4 @@ Quantum Nativeとしての感覚を身につけて、この道場を巣立って
 [Keisuke Fujii](http://quantphys.org/wp/keisukefujii/)
 [Kosuke Mitarai](https://scholar.google.com/citations?user=TfsGcnMAAAAJ),
 [Ikko Hamamura](https://twitter.com/ikkoham),
-[@kamakiri](https://twitter.com/kamakiri_ys),
-
-## 使用について
-・本教材は教育目的で自由にご使用下さい。個人・教育機関・企業内の勉強会等で活用してください。
-・本教材を使った無料の勉強会は歓迎します。是非開催の様子を [@QunaSys](https://twitter.com/QunaSys)  に教えてください。
+[@kamakiri](https://twitter.com/kamakiri_ys)
