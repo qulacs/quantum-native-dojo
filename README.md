@@ -15,10 +15,10 @@ Quantum Nativeとしての感覚を身につけて、この道場を巣立って
 
 [Qulacs Slack Community](https://join.slack.com/t/qulacs/shared_invite/enQtNDY3Njc1NjU5MDE1LTY4MTNlNDQzYjA1ZGUzZGFiNDQ1MzE2Yjg4ZmM4YjUyNGM0NmNmMjA5NmI2YWFlZDk2ODE1OTUzZTE5YjRmZWU)
 
-# 本教材の作者
+## 本教材の作者
 本教材はQunaSysと以下のContributorsの方がによって作られてメンテナンスされています。
 
-## Contributors (自由に書き足してください！リンクは自由に)
+### Contributors (自由に書き足してください！リンクは自由に)
 [Keisuke Fujii](http://quantphys.org/wp/keisukefujii/)
 [Kosuke Mitarai](https://scholar.google.com/citations?user=TfsGcnMAAAAJ),
 [Ikko Hamamura](https://twitter.com/ikkoham),
