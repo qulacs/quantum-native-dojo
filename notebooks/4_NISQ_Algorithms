@@ -1,0 +1,558 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "VQE_H2.ipynb",
+      "version": "0.3.2",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/qulacs/quantum-native-dojo/blob/dev/notebooks/4_NISQ_Algorithms\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "8xIq6dtwsyL7",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "# Qulacs & openfermion & psi4 で VQE\n",
+        "\n",
+        "必要なもの\n",
+        "\n",
+        "- qulacs\n",
+        "- openfermion\n",
+        "- openfermion-psi4\n",
+        "- psi4\n",
+        "- scipy\n",
+        "- numpy"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "M9nExQays0Ml",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 2349
+        },
+        "outputId": "ab1ed415-e3d6-410d-82ed-b7dcea41dfe4"
+      },
+      "cell_type": "code",
+      "source": [
+        "!pip install qulacs\n",
+        "!pip install openfermion\n",
+        "!pip install openfermionpsi4"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "Collecting qulacs\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/31/77/66220b68e7dc5ea193201d42842f906f257e6addb1586963f0c9a620e556/Qulacs-0.1.0.tar.gz (132kB)\n",
+            "\u001b[K    100% |████████████████████████████████| 133kB 6.0MB/s \n",
+            "\u001b[?25hBuilding wheels for collected packages: qulacs\n",
+            "  Running setup.py bdist_wheel for qulacs ... \u001b[?25l-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \b/\b \b-\b \b\\\b \b|\b \bdone\n",
+            "\u001b[?25h  Stored in directory: /root/.cache/pip/wheels/d6/88/e7/b094dc866f822a6bc924f1ba029350e07b22361a582261e1e8\n",
+            "Successfully built qulacs\n",
+            "Installing collected packages: qulacs\n",
+            "Successfully installed qulacs-0.1.0\n",
+            "Collecting openfermion\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/6b/29/0090647a45677f44734c8aab0ec55671416be4ef3c0657c24fb40f5abd14/openfermion-0.9.0.tar.gz (608kB)\n",
+            "\u001b[K    100% |████████████████████████████████| 614kB 21.8MB/s \n",
+            "\u001b[?25hRequirement already satisfied: numpy>=1.11.0 in /usr/local/lib/python3.6/dist-packages (from openfermion) (1.14.6)\n",
+            "Requirement already satisfied: scipy>=1.1.0 in /usr/local/lib/python3.6/dist-packages (from openfermion) (1.1.0)\n",
+            "Requirement already satisfied: h5py>=2.8 in /usr/local/lib/python3.6/dist-packages (from openfermion) (2.8.0)\n",
+            "Requirement already satisfied: future in /usr/local/lib/python3.6/dist-packages (from openfermion) (0.16.0)\n",
+            "Requirement already satisfied: jupyter in /usr/local/lib/python3.6/dist-packages (from openfermion) (1.0.0)\n",
+            "Requirement already satisfied: nbformat in /usr/local/lib/python3.6/dist-packages (from openfermion) (4.4.0)\n",
+            "Requirement already satisfied: networkx in /usr/local/lib/python3.6/dist-packages (from openfermion) (2.2)\n",
+            "Requirement already satisfied: matplotlib in /usr/local/lib/python3.6/dist-packages (from openfermion) (3.0.2)\n",
+            "Collecting pubchempy (from openfermion)\n",
+            "  Downloading https://files.pythonhosted.org/packages/aa/fb/8de3aa9804b614dbc8dc5c16ed061d819cc360e0ddecda3dcd01c1552339/PubChemPy-1.0.4.tar.gz\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.6/dist-packages (from openfermion) (1.11.0)\n",
+            "Requirement already satisfied: ipykernel in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion) (4.6.1)\n",
+            "Requirement already satisfied: qtconsole in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion) (4.4.3)\n",
+            "Requirement already satisfied: jupyter-console in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion) (6.0.0)\n",
+            "Requirement already satisfied: ipywidgets in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion) (7.4.2)\n",
+            "Requirement already satisfied: nbconvert in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion) (5.4.0)\n",
+            "Requirement already satisfied: notebook in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion) (5.2.2)\n",
+            "Requirement already satisfied: ipython-genutils in /usr/local/lib/python3.6/dist-packages (from nbformat->openfermion) (0.2.0)\n",
+            "Requirement already satisfied: traitlets>=4.1 in /usr/local/lib/python3.6/dist-packages (from nbformat->openfermion) (4.3.2)\n",
+            "Requirement already satisfied: jsonschema!=2.5.0,>=2.4 in /usr/local/lib/python3.6/dist-packages (from nbformat->openfermion) (2.6.0)\n",
+            "Requirement already satisfied: jupyter-core in /usr/local/lib/python3.6/dist-packages (from nbformat->openfermion) (4.4.0)\n",
+            "Requirement already satisfied: decorator>=4.3.0 in /usr/local/lib/python3.6/dist-packages (from networkx->openfermion) (4.3.0)\n",
+            "Requirement already satisfied: python-dateutil>=2.1 in /usr/local/lib/python3.6/dist-packages (from matplotlib->openfermion) (2.5.3)\n",
+            "Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /usr/local/lib/python3.6/dist-packages (from matplotlib->openfermion) (2.3.1)\n",
+            "Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.6/dist-packages (from matplotlib->openfermion) (1.0.1)\n",
+            "Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.6/dist-packages (from matplotlib->openfermion) (0.10.0)\n",
+            "Requirement already satisfied: jupyter-client in /usr/local/lib/python3.6/dist-packages (from ipykernel->jupyter->openfermion) (5.2.4)\n",
+            "Requirement already satisfied: tornado>=4.0 in /usr/local/lib/python3.6/dist-packages (from ipykernel->jupyter->openfermion) (4.5.3)\n",
+            "Requirement already satisfied: ipython>=4.0.0 in /usr/local/lib/python3.6/dist-packages (from ipykernel->jupyter->openfermion) (5.5.0)\n",
+            "Requirement already satisfied: pygments in /usr/local/lib/python3.6/dist-packages (from qtconsole->jupyter->openfermion) (2.1.3)\n",
+            "Collecting prompt-toolkit<2.1.0,>=2.0.0 (from jupyter-console->jupyter->openfermion)\n",
+            "\u001b[?25l  Downloading https://files.pythonhosted.org/packages/d1/e6/adb3be5576f5d27c6faa33f1e9fea8fe5dbd9351db12148de948507e352c/prompt_toolkit-2.0.7-py3-none-any.whl (338kB)\n",
+            "\u001b[K    100% |████████████████████████████████| 348kB 26.6MB/s \n",
+            "\u001b[?25hRequirement already satisfied: widgetsnbextension~=3.4.0 in /usr/local/lib/python3.6/dist-packages (from ipywidgets->jupyter->openfermion) (3.4.2)\n",
+            "Requirement already satisfied: pandocfilters>=1.4.1 in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion) (1.4.2)\n",
+            "Requirement already satisfied: jinja2 in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion) (2.10)\n",
+            "Requirement already satisfied: defusedxml in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion) (0.5.0)\n",
+            "Requirement already satisfied: entrypoints>=0.2.2 in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion) (0.3)\n",
+            "Requirement already satisfied: testpath in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion) (0.4.2)\n",
+            "Requirement already satisfied: mistune>=0.8.1 in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion) (0.8.4)\n",
+            "Requirement already satisfied: bleach in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion) (3.1.0)\n",
+            "Requirement already satisfied: terminado>=0.3.3; sys_platform != \"win32\" in /usr/local/lib/python3.6/dist-packages (from notebook->jupyter->openfermion) (0.8.1)\n",
+            "Requirement already satisfied: setuptools in /usr/local/lib/python3.6/dist-packages (from kiwisolver>=1.0.1->matplotlib->openfermion) (40.6.3)\n",
+            "Requirement already satisfied: pyzmq>=13 in /usr/local/lib/python3.6/dist-packages (from jupyter-client->ipykernel->jupyter->openfermion) (17.0.0)\n",
+            "Requirement already satisfied: pexpect; sys_platform != \"win32\" in /usr/local/lib/python3.6/dist-packages (from ipython>=4.0.0->ipykernel->jupyter->openfermion) (4.6.0)\n",
+            "Requirement already satisfied: simplegeneric>0.8 in /usr/local/lib/python3.6/dist-packages (from ipython>=4.0.0->ipykernel->jupyter->openfermion) (0.8.1)\n",
+            "Requirement already satisfied: pickleshare in /usr/local/lib/python3.6/dist-packages (from ipython>=4.0.0->ipykernel->jupyter->openfermion) (0.7.5)\n",
+            "Requirement already satisfied: wcwidth in /usr/local/lib/python3.6/dist-packages (from prompt-toolkit<2.1.0,>=2.0.0->jupyter-console->jupyter->openfermion) (0.1.7)\n",
+            "Requirement already satisfied: MarkupSafe>=0.23 in /usr/local/lib/python3.6/dist-packages (from jinja2->nbconvert->jupyter->openfermion) (1.1.0)\n",
+            "Requirement already satisfied: webencodings in /usr/local/lib/python3.6/dist-packages (from bleach->nbconvert->jupyter->openfermion) (0.5.1)\n",
+            "Requirement already satisfied: ptyprocess; os_name != \"nt\" in /usr/local/lib/python3.6/dist-packages (from terminado>=0.3.3; sys_platform != \"win32\"->notebook->jupyter->openfermion) (0.6.0)\n",
+            "Building wheels for collected packages: openfermion, pubchempy\n",
+            "  Running setup.py bdist_wheel for openfermion ... \u001b[?25l-\b \b\\\b \b|\b \bdone\n",
+            "\u001b[?25h  Stored in directory: /root/.cache/pip/wheels/c6/24/16/1ee82a50a11993a78c73f1fe208cd83c5c69d0930c1ca1817b\n",
+            "  Running setup.py bdist_wheel for pubchempy ... \u001b[?25l-\b \bdone\n",
+            "\u001b[?25h  Stored in directory: /root/.cache/pip/wheels/10/4d/51/6b843681a9a5aef35f0d0fbce243de46f85080036e16118752\n",
+            "Successfully built openfermion pubchempy\n",
+            "\u001b[31mipython 5.5.0 has requirement prompt-toolkit<2.0.0,>=1.0.4, but you'll have prompt-toolkit 2.0.7 which is incompatible.\u001b[0m\n",
+            "\u001b[31mcufflinks 0.14.6 has requirement plotly>=3.0.0, but you'll have plotly 1.12.12 which is incompatible.\u001b[0m\n",
+            "Installing collected packages: pubchempy, openfermion, prompt-toolkit\n",
+            "  Found existing installation: prompt-toolkit 1.0.15\n",
+            "    Uninstalling prompt-toolkit-1.0.15:\n",
+            "      Successfully uninstalled prompt-toolkit-1.0.15\n",
+            "Successfully installed openfermion-0.9.0 prompt-toolkit-2.0.7 pubchempy-1.0.4\n",
+            "\u001b[0;31;1mWARNING: The following packages were previously imported in this runtime:\n",
+            "  [prompt_toolkit]\n",
+            "You must restart the runtime in order to use newly installed versions.\u001b[0m\n",
+            "Collecting openfermionpsi4\n",
+            "  Downloading https://files.pythonhosted.org/packages/36/62/7ef87315f0000a3cfe84d2546fa72f0e402ffd2319b066e83016fea82d3a/openfermionpsi4-0.4.tar.gz\n",
+            "Requirement already satisfied: openfermion>=0.5 in /usr/local/lib/python3.6/dist-packages (from openfermionpsi4) (0.9.0)\n",
+            "Requirement already satisfied: matplotlib in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (3.0.2)\n",
+            "Requirement already satisfied: networkx in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (2.2)\n",
+            "Requirement already satisfied: jupyter in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (1.0.0)\n",
+            "Requirement already satisfied: nbformat in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (4.4.0)\n",
+            "Requirement already satisfied: pubchempy in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (1.0.4)\n",
+            "Requirement already satisfied: h5py>=2.8 in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (2.8.0)\n",
+            "Requirement already satisfied: six in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (1.11.0)\n",
+            "Requirement already satisfied: numpy>=1.11.0 in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (1.14.6)\n",
+            "Requirement already satisfied: future in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (0.16.0)\n",
+            "Requirement already satisfied: scipy>=1.1.0 in /usr/local/lib/python3.6/dist-packages (from openfermion>=0.5->openfermionpsi4) (1.1.0)\n",
+            "Requirement already satisfied: pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 in /usr/local/lib/python3.6/dist-packages (from matplotlib->openfermion>=0.5->openfermionpsi4) (2.3.1)\n",
+            "Requirement already satisfied: python-dateutil>=2.1 in /usr/local/lib/python3.6/dist-packages (from matplotlib->openfermion>=0.5->openfermionpsi4) (2.5.3)\n",
+            "Requirement already satisfied: cycler>=0.10 in /usr/local/lib/python3.6/dist-packages (from matplotlib->openfermion>=0.5->openfermionpsi4) (0.10.0)\n",
+            "Requirement already satisfied: kiwisolver>=1.0.1 in /usr/local/lib/python3.6/dist-packages (from matplotlib->openfermion>=0.5->openfermionpsi4) (1.0.1)\n",
+            "Requirement already satisfied: decorator>=4.3.0 in /usr/local/lib/python3.6/dist-packages (from networkx->openfermion>=0.5->openfermionpsi4) (4.3.0)\n",
+            "Requirement already satisfied: ipywidgets in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion>=0.5->openfermionpsi4) (7.4.2)\n",
+            "Requirement already satisfied: jupyter-console in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion>=0.5->openfermionpsi4) (6.0.0)\n",
+            "Requirement already satisfied: qtconsole in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion>=0.5->openfermionpsi4) (4.4.3)\n",
+            "Requirement already satisfied: ipykernel in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion>=0.5->openfermionpsi4) (4.6.1)\n",
+            "Requirement already satisfied: nbconvert in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion>=0.5->openfermionpsi4) (5.4.0)\n",
+            "Requirement already satisfied: notebook in /usr/local/lib/python3.6/dist-packages (from jupyter->openfermion>=0.5->openfermionpsi4) (5.2.2)\n",
+            "Requirement already satisfied: jsonschema!=2.5.0,>=2.4 in /usr/local/lib/python3.6/dist-packages (from nbformat->openfermion>=0.5->openfermionpsi4) (2.6.0)\n",
+            "Requirement already satisfied: jupyter-core in /usr/local/lib/python3.6/dist-packages (from nbformat->openfermion>=0.5->openfermionpsi4) (4.4.0)\n",
+            "Requirement already satisfied: traitlets>=4.1 in /usr/local/lib/python3.6/dist-packages (from nbformat->openfermion>=0.5->openfermionpsi4) (4.3.2)\n",
+            "Requirement already satisfied: ipython-genutils in /usr/local/lib/python3.6/dist-packages (from nbformat->openfermion>=0.5->openfermionpsi4) (0.2.0)\n",
+            "Requirement already satisfied: setuptools in /usr/local/lib/python3.6/dist-packages (from kiwisolver>=1.0.1->matplotlib->openfermion>=0.5->openfermionpsi4) (40.6.3)\n",
+            "Requirement already satisfied: widgetsnbextension~=3.4.0 in /usr/local/lib/python3.6/dist-packages (from ipywidgets->jupyter->openfermion>=0.5->openfermionpsi4) (3.4.2)\n",
+            "Requirement already satisfied: ipython>=4.0.0; python_version >= \"3.3\" in /usr/local/lib/python3.6/dist-packages (from ipywidgets->jupyter->openfermion>=0.5->openfermionpsi4) (5.5.0)\n",
+            "Requirement already satisfied: prompt-toolkit<2.1.0,>=2.0.0 in /usr/local/lib/python3.6/dist-packages (from jupyter-console->jupyter->openfermion>=0.5->openfermionpsi4) (2.0.7)\n",
+            "Requirement already satisfied: jupyter-client in /usr/local/lib/python3.6/dist-packages (from jupyter-console->jupyter->openfermion>=0.5->openfermionpsi4) (5.2.4)\n",
+            "Requirement already satisfied: pygments in /usr/local/lib/python3.6/dist-packages (from jupyter-console->jupyter->openfermion>=0.5->openfermionpsi4) (2.1.3)\n",
+            "Requirement already satisfied: tornado>=4.0 in /usr/local/lib/python3.6/dist-packages (from ipykernel->jupyter->openfermion>=0.5->openfermionpsi4) (4.5.3)\n",
+            "Requirement already satisfied: defusedxml in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (0.5.0)\n",
+            "Requirement already satisfied: jinja2 in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (2.10)\n",
+            "Requirement already satisfied: bleach in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (3.1.0)\n",
+            "Requirement already satisfied: entrypoints>=0.2.2 in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (0.3)\n",
+            "Requirement already satisfied: testpath in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (0.4.2)\n",
+            "Requirement already satisfied: pandocfilters>=1.4.1 in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (1.4.2)\n",
+            "Requirement already satisfied: mistune>=0.8.1 in /usr/local/lib/python3.6/dist-packages (from nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (0.8.4)\n",
+            "Requirement already satisfied: terminado>=0.3.3; sys_platform != \"win32\" in /usr/local/lib/python3.6/dist-packages (from notebook->jupyter->openfermion>=0.5->openfermionpsi4) (0.8.1)\n",
+            "Requirement already satisfied: pickleshare in /usr/local/lib/python3.6/dist-packages (from ipython>=4.0.0; python_version >= \"3.3\"->ipywidgets->jupyter->openfermion>=0.5->openfermionpsi4) (0.7.5)\n",
+            "Requirement already satisfied: simplegeneric>0.8 in /usr/local/lib/python3.6/dist-packages (from ipython>=4.0.0; python_version >= \"3.3\"->ipywidgets->jupyter->openfermion>=0.5->openfermionpsi4) (0.8.1)\n",
+            "Requirement already satisfied: pexpect; sys_platform != \"win32\" in /usr/local/lib/python3.6/dist-packages (from ipython>=4.0.0; python_version >= \"3.3\"->ipywidgets->jupyter->openfermion>=0.5->openfermionpsi4) (4.6.0)\n",
+            "Requirement already satisfied: wcwidth in /usr/local/lib/python3.6/dist-packages (from prompt-toolkit<2.1.0,>=2.0.0->jupyter-console->jupyter->openfermion>=0.5->openfermionpsi4) (0.1.7)\n",
+            "Requirement already satisfied: pyzmq>=13 in /usr/local/lib/python3.6/dist-packages (from jupyter-client->jupyter-console->jupyter->openfermion>=0.5->openfermionpsi4) (17.0.0)\n",
+            "Requirement already satisfied: MarkupSafe>=0.23 in /usr/local/lib/python3.6/dist-packages (from jinja2->nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (1.1.0)\n",
+            "Requirement already satisfied: webencodings in /usr/local/lib/python3.6/dist-packages (from bleach->nbconvert->jupyter->openfermion>=0.5->openfermionpsi4) (0.5.1)\n",
+            "Requirement already satisfied: ptyprocess; os_name != \"nt\" in /usr/local/lib/python3.6/dist-packages (from terminado>=0.3.3; sys_platform != \"win32\"->notebook->jupyter->openfermion>=0.5->openfermionpsi4) (0.6.0)\n",
+            "Building wheels for collected packages: openfermionpsi4\n",
+            "  Running setup.py bdist_wheel for openfermionpsi4 ... \u001b[?25l-\b \bdone\n",
+            "\u001b[?25h  Stored in directory: /root/.cache/pip/wheels/de/c1/21/aae8f21f2748b6599daa11dfc9f483986554b523947f2d9096\n",
+            "Successfully built openfermionpsi4\n",
+            "Installing collected packages: openfermionpsi4\n",
+            "Successfully installed openfermionpsi4-0.4\n"
+          ],
+          "name": "stdout"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "id": "pH7RThdDsyL9",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "import sys, os\n",
+        "import qulacs\n",
+        "\n",
+        "from openfermion.transforms import get_fermion_operator, jordan_wigner\n",
+        "from openfermion.transforms import get_sparse_operator\n",
+        "from openfermion.hamiltonians import MolecularData\n",
+        "from openfermionpsi4 import run_psi4\n",
+        "\n",
+        "from scipy.optimize import minimize\n",
+        "import numpy as np\n",
+        "import matplotlib.pyplot as plt"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "nkH99NaGsyMB",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "## ハミルトニアンを作る"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "xJpl7Vp9syMC",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "basis = \"sto-3g\"\n",
+        "multiplicity = 1\n",
+        "charge = 0\n",
+        "trotter_step = 1\n",
+        "distance  = 0.977\n",
+        "geometry = [[\"H\", [0,0,0]],[\"H\", [0,0,distance]]]\n",
+        "description  = \"tmp\"\n",
+        "molecule = MolecularData(geometry, basis, multiplicity, charge, description)\n",
+        "molecule = run_psi4(molecule,run_scf=1,run_fci=1)\n",
+        "\n",
+        "n_qubit = molecule.n_qubits\n",
+        "n_electron = molecule.n_electrons"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "LON6c0tnsyME",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "### ハミルトニアンを変換・表示する"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "jtofZ_yPsyMF",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "fermionic_hamiltonian = get_fermion_operator(molecule.get_molecular_hamiltonian())\n",
+        "jw_hamiltonian = jordan_wigner(fermionic_hamiltonian)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "4X_ihaAIsyMI",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "print(jw_hamiltonian)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "vS6FEcbtsyMK",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "### ハミルトニアンを qulacs ハミルトニアンに変換する"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "kBDSLk92syMM",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "from qulacs import Observable\n",
+        "from qulacs.observable import create_observable_from_openfermion_text"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "yhXoLUs8syMO",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "qulacs_hamiltonian = create_observable_from_openfermion_text(str(jw_hamiltonian))"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "QjFzqer6syMQ",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "## ansatz を構成する"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "oY7YBgDEsyMR",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "from qulacs import QuantumState, QuantumCircuit\n",
+        "from qulacs.gate import CZ, RY, RZ, merge\n",
+        "\n",
+        "depth = n_qubit"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "GPH6iPWosyMT",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "def he_ansatz_circuit(n_qubit, depth, theta_list):\n",
+        "    \"\"\"he_ansatz_circuit\n",
+        "    Retunrs hardware efficient ansatz circuit.\n",
+        "\n",
+        "    Args:\n",
+        "        n_qubit (:class:`int`):\n",
+        "            the number of qubit used (equivalent to the number of fermionic modes)\n",
+        "        depth (:class:`int`):\n",
+        "            depth of the circuit.\n",
+        "        theta_list (:class:`numpy.ndarray`):\n",
+        "            rotation angles.\n",
+        "    Returns:\n",
+        "        :class:`qulacs.QuantumCircuit`\n",
+        "    \"\"\"\n",
+        "    circuit = QuantumCircuit(n_qubit)\n",
+        "    \n",
+        "    for d in range(depth):\n",
+        "        for i in range(n_qubit):\n",
+        "            circuit.add_gate(merge(RY(i, theta_list[2*i+2*n_qubit*d]), RZ(i, theta_list[2*i+1+2*n_qubit*d])))\n",
+        "        for i in range(n_qubit//2):\n",
+        "            circuit.add_gate(CZ(2*i, 2*i+1))\n",
+        "        for i in range(n_qubit//2-1):\n",
+        "            circuit.add_gate(CZ(2*i+1, 2*i+2))\n",
+        "    for i in range(n_qubit):\n",
+        "        circuit.add_gate(merge(RY(i, theta_list[2*i+2*n_qubit*depth]), RZ(i, theta_list[2*i+1+2*n_qubit*depth])))\n",
+        "    \n",
+        "    return circuit"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "BMVKI-DQsyMW",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "## Hartree Fock エネルギーのチェック"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "33QhFJlMsyMY",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "input_state = QuantumState(n_qubit)\n",
+        "input_state.set_computational_basis(int('0b'+'0'*(n_qubit - n_electron)+'1'*(n_electron),2))"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "3ndahQKisyMa",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "qulacs_hamiltonian.get_expectation_value(input_state)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "M3fcNk1ssyMd",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "molecule.hf_energy"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "9Z6wA1WIsyMf",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "## VQE の cost function"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "MHmEm6HJsyMf",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "def cost(theta_list):\n",
+        "    input_state.set_computational_basis(int('0b'+'0'*(n_qubit - n_electron)+'1'*(n_electron),2))\n",
+        "    circuit = he_ansatz_circuit(n_qubit, depth, theta_list)\n",
+        "    circuit.update_quantum_state(input_state)\n",
+        "    return qulacs_hamiltonian.get_expectation_value(input_state)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "G67GMD8xsyMi",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "## 初期パラメータセット"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "HI4_oYTJsyMj",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "init_theta_list = np.random.random(2*n_qubit*(depth+1))*1e-1\n",
+        "init_theta_list"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "DxyuIQuGsyMl",
+        "colab_type": "text"
+      },
+      "cell_type": "markdown",
+      "source": [
+        "## 最適化"
+      ]
+    },
+    {
+      "metadata": {
+        "id": "OTPuIj4SsyMl",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "method = \"BFGS\"\n",
+        "options = {\"disp\": True, \"maxiter\": 50, \"gtol\": 1e-6}\n",
+        "opt = minimize(cost, init_theta_list, method = method)"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "t1c_ycEKsyMp",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "opt.x"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "metadata": {
+        "id": "Hl_uWXARsyMu",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "cell_type": "code",
+      "source": [
+        "print(opt.fun, float(molecule.fci_energy))"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
