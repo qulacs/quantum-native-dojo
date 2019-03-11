@@ -20,7 +20,7 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 - 行列とベクトルの掛け算、対角化とは何か
 
 ## 教材の進め方
-基本的に、このレポジトリの"notebook"フォルダ以下にある `ipython notebook` を読みながら/実行しながら進めていきましょう。
+基本的に、このレポジトリの"notebook"フォルダ以下にある `Jupyter notebook` を読みながら/実行しながら進めていきましょう。
 各 `Jupyter notebook` は `Google Colabolatory` で実行することができるので、自前で環境を構築する必要はありません。
 (もちろん、Pythonに詳しい方は手元でnotebookを実行して納得するまで使い倒してください)
 
@@ -49,41 +49,44 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 上記のパッケージをまとめてインストールするには `anaconda3` のインストールが便利です。
 
 
-## 目次
-### 1. 量子情報の基礎  
+## 目次 (ベータ版)
+### 1. 量子情報理論入門 
+#### 1.1 量子情報の基礎
 - 量子ビット
 - 基本演算
 - 複数量子ビットの表現
+#### 1.2 量子アルゴリズム入門(アダマールテスト・位相推定)
+- ~~量子フーリエ変換~~
 - アダマールテスト
-- QFT
-- アダマールテストと位相推定
 - 位相推定アルゴリズム
 - 素因数分解
 
 ### 2. 様々な量子アルゴリズム
-- Groverのアルゴリズム
-- HHLアルゴリズム
+1. ~~Groverのアルゴリズム~~
+2. ~~Harrow-Hassidim-Lloydアルゴリズム~~
 
-### 3. NISQアルゴリズム
-- 変分量子回路
-- VQE
-- QAOA
-- Quantum circuit learning
-- error mitigation
+### 3. NISQ (Noise Intermidiate-Scale Quantum) アルゴリズム
+1. ~~NISQとは~~
+2. ~~Variational quantum eigensolver (VQE)~~
+3. ~~Quantum Approximate Optimization Algorithm (OAOA)~~
+4. ~~Quantum circuit learning~~
+5. ~~error mitigation technique~~
 
 ### 4. NISQの実機を触ってみる
-- IBM Q
+1. ~~IBM Q Expenceの実行とQuantum Volumeの測定~~
 
 ### 5. 量子化学計算実践
-- Openfermionの使い方
-- PEA・VQEを深掘りする
-- SSVQE
+1. ~~Openfermionの使い方~~
+2. ~~位相推定・VQEを使って分子の基底状態エネルギーを求めてみる (H2, LiH, etc)~~
+3. ~~励起状態を求める (subspace-variational quantum eigensolver)~~
 
 ### 6. 量子機械学習実践
-- HHLを使って推薦システム構築 or ポートフォリオ最適化
-- Quantum SVM
+1. ~~HHLアルゴリズムを用いたポートフォリオ最適化~~
+2. ~~Quantum circuit learningを用いた分類器作製~~
 
-### 7. 誤り訂正 
+### 7. 誤り訂正理論
+1. ~~古典誤り訂正と量子誤り訂正~~
+
 
 ## 参考文献
 量子力学・量子コンピュータについてより詳しく知りたい/深く理解したい場合には、以下のような参考書をオススメします。
@@ -103,9 +106,10 @@ https://www.amazon.co.jp/dp/4781910629)」、サイエンス社 (2004)
 ## 本教材の作者
 本教材は[株式会社QunaSys](https://qunasys.com)と以下のContributorの方々によって作製・メンテナンスされています。
 
-### Contributors (自由に書き足してください！リンクは自由に)
+### Contributors
 [Keisuke Fujii](http://quantphys.org/wp/keisukefujii/)
 [Kosuke Mitarai](https://scholar.google.com/citations?user=TfsGcnMAAAAJ),
 [Ikko Hamamura](https://twitter.com/ikkoham),
 [@kamakiri](https://twitter.com/kamakiri_ys)
-[Yuya-O-Nakagawa](https://scholar.google.co.jp/citations?user=LyU8LXsAAAAJ)
+[Yuya-O-Nakagawa](https://scholar.google.co.jp/citations?user=LyU8LXsAAAAJ),
+[yamamoto-takahiro](https://github.com/yamamoto-takahiro)
