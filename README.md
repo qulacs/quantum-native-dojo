@@ -4,7 +4,7 @@ Quantum Native Dojoは量子コンピュータについて勉強したいと思�
 
 量子コンピュータの基本的な動作原理から、基礎アルゴリズム、それらを応用してどのように化学計算や金融計算などに役立てるかを学ぶことができます。本教材は誤り訂正の有る量子コンピュータのアルゴリズムの他、数年以内に実用されるであろう誤り訂正のないNISQ (Noisy Intermidiate-Scale Quantum) デバイスのアルゴリズムもカバーしています。
 
-全ての教材がipython notebookで製作され、そのままGoogle Colaboratory上で実行可能になっているので、面倒な環境設定をすることなく学習を始めることが可能です。
+全ての教材が `Jupyter notebook` で製作され、そのまま Google Colaboratory 上で実行可能になっているので、面倒な環境設定をすることなく学習を始めることが可能です。
 
 ## この教材の意義： Becoming Quantum Native
 量子コンピュータは、量子力学の原理に基づいて計算を行います。一方、私達がふだん目にする物理現象は主に古典力学に支配されています。ここに「量子コンピュータは難しい」と思われる原因の一端があります。
@@ -21,7 +21,7 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 
 ## 教材の進め方
 基本的に、このレポジトリの"notebook"フォルダ以下にある `ipython notebook` を読みながら/実行しながら進めていきましょう。
-各 `ipyhon notebook` は `Google Colabolatory` で実行することができるので、自前で環境を構築する必要はありません。
+各 `Jupyter notebook` は `Google Colabolatory` で実行することができるので、自前で環境を構築する必要はありません。
 (もちろん、Pythonに詳しい方は手元でnotebookを実行して納得するまで使い倒してください)
 
 ### `Google Colabolatory`  上で実行する場合
@@ -39,11 +39,11 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 5. 開きたいノートブックを選択します
 ![colab](readme-figs/how-to-colab-04.png)
 
-### `ipyhon notebook` 上で実行する場合
+### `Jupyter notebook` で実行する場合
 1. [Quantum Native Dojo のリポジトリ](https://github.com/qulacs/quantum-native-dojo) をフォークします
 2. Console から `$ jupyter notebook` で[ノートブックを起動](https://jupyter.readthedocs.io/en/latest/running.html#running)させます
 
-`jupyter` 起動させるためには `Python 3.3` 以上と `Jupyter` をインストールする必要があります。
+`Jupyter` 起動させるためには `Python 3.3` 以上と `Jupyter` をインストールする必要があります。
 
 また、ノートブックに埋め込まれているコードを実行するためには、`numpy`、`scipy`、`sympy` をインストールする必要があります。
 上記のパッケージをまとめてインストールするには `anaconda3` のインストールが便利です。
