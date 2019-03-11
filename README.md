@@ -26,12 +26,18 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 
 ### `Google Colabolatory`  上で実行する場合
 1. [Google Colabolatory](https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja) のページを開きます
-![colab](readme-figs/how-to-colab-00.png)
-
 2. `ファイル` > `ノートブックを開く` を選択します
+![colab](readme-figs/how-to-colab-00.png)
+![colab](readme-figs/how-to-colab-01.png)
+
 3. `GITHUB` のタブを選択し、ノートブックの絞り込みの欄に `qulacs` と入力します
+![colab](readme-figs/how-to-colab-02.png)
+
 4. レポジトリのプルダウンで `qulacs/quantum-native-dojo` を選択し、ブランチで `master` を選択します
-5. 開きたいノートブックを選択します 
+![colab](readme-figs/how-to-colab-03.png)
+
+5. 開きたいノートブックを選択します
+![colab](readme-figs/how-to-colab-04.png)
 
 ### `ipyhon notebook`
 
