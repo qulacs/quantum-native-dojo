@@ -1,4 +1,4 @@
-# Welcome to Quantum Native Dojo!
+# Welcome to Quantum Native Dojo ($\beta$)!
 
 Quantum Native Dojoは量子コンピュータについて勉強したいと思っている方のために作られた自習教材です。
 
@@ -43,13 +43,13 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 1. [Quantum Native Dojo のリポジトリ](https://github.com/qulacs/quantum-native-dojo) をフォークします
 2. Console から `$ jupyter notebook` で[ノートブックを起動](https://jupyter.readthedocs.io/en/latest/running.html#running)させます
 
-`Jupyter` 起動させるためには `Python 3.3` 以上と `Jupyter` をインストールする必要があります。
+`Jupyter` を起動させるためには `Python 3.3` 以上と `Jupyter` をインストールする必要があります。
 
 また、ノートブックに埋め込まれているコードを実行するためには、`numpy`、`scipy`、`sympy` をインストールする必要があります。
 上記のパッケージをまとめてインストールするには `anaconda3` のインストールが便利です。
 
 
-## 目次 (ベータ版)
+## 目次 (仮)
 ### 1. 量子情報理論入門 
 #### 1.1 量子情報の基礎
 - 量子ビット
@@ -73,7 +73,7 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 5. ~~error mitigation technique~~
 
 ### 4. NISQの実機を触ってみる
-1. ~~IBM Q Expenceの実行とQuantum Volumeの測定~~
+1. ~~IBM Q Experienceの実行とQuantum Volumeの測定~~
 
 ### 5. 量子化学計算実践
 1. ~~Openfermionの使い方~~
@@ -107,9 +107,10 @@ https://www.amazon.co.jp/dp/4781910629)」、サイエンス社 (2004)
 本教材は[株式会社QunaSys](https://qunasys.com)と以下のContributorの方々によって作製・メンテナンスされています。
 
 ### Contributors
-[Keisuke Fujii](http://quantphys.org/wp/keisukefujii/)
+[Keisuke Fujii](http://quantphys.org/wp/keisukefujii/),
+[kwkbr](https://github.com/kwkbtr),
+[MakotoNakai](https://github.com/MakotoNakai),
+[yoooopeeee](https://github.com/yoooopeeee),
 [Kosuke Mitarai](https://scholar.google.com/citations?user=TfsGcnMAAAAJ),
-[Ikko Hamamura](https://twitter.com/ikkoham),
-[@kamakiri](https://twitter.com/kamakiri_ys)
 [Yuya-O-Nakagawa](https://scholar.google.co.jp/citations?user=LyU8LXsAAAAJ),
 [yamamoto-takahiro](https://github.com/yamamoto-takahiro)
