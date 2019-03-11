@@ -1,4 +1,4 @@
-# Welcome to Quantum Native Dojo ($\beta$)!
+# Welcome to Quantum Native Dojo (beta)!
 
 Quantum Native Dojoは量子コンピュータについて勉強したいと思っている方のために作られた自習教材です。
 
