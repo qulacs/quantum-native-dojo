@@ -39,7 +39,14 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 5. 開きたいノートブックを選択します
 ![colab](readme-figs/how-to-colab-04.png)
 
-### `ipyhon notebook`
+### `ipyhon notebook` 上で実行する場合
+1. [Quantum Native Dojo のリポジトリ](https://github.com/qulacs/quantum-native-dojo) をフォークします
+2. Console から `$ jupyter notebook` で[ノートブックを起動](https://jupyter.readthedocs.io/en/latest/running.html#running)させます
+
+`jupyter` 起動させるためには `Python 3.3` 以上と `Jupyter` をインストールする必要があります。
+
+また、ノートブックに埋め込まれているコードを実行するためには、`numpy`、`scipy`、`sympy` をインストールする必要があります。
+上記のパッケージをまとめてインストールするには `anaconda3` のインストールが便利です。
 
 
 ## 目次
