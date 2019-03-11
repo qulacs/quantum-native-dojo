@@ -20,9 +20,20 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 - 行列とベクトルの掛け算、対角化とは何か
 
 ## 教材の進め方
-基本的に、このレポジトリの"notebook"フォルダ以下にあるipython notebookを読みながら/実行しながら進めていきましょう。
-各ipyhon notebookはGoogle Colabolatoryで実行することができるので、自前で環境を構築する必要はありません。
+基本的に、このレポジトリの"notebook"フォルダ以下にある `ipython notebook` を読みながら/実行しながら進めていきましょう。
+各 `ipyhon notebook` は `Google Colabolatory` で実行することができるので、自前で環境を構築する必要はありません。
 (もちろん、Pythonに詳しい方は手元でnotebookを実行して納得するまで使い倒してください)
+
+### `Google Colabolatory`  上で実行する場合
+1. [Google Colabolatory](https://colab.research.google.com/notebooks/welcome.ipynb?hl=ja) のページを開きます
+![colab](readme-figs/how-to-colab-00.png)
+
+2. `ファイル` > `ノートブックを開く` を選択します
+3. `GITHUB` のタブを選択し、ノートブックの絞り込みの欄に `qulacs` と入力します
+4. レポジトリのプルダウンで `qulacs/quantum-native-dojo` を選択し、ブランチで `master` を選択します
+5. 開きたいノートブックを選択します 
+
+### `ipyhon notebook`
 
 
 ## 目次
