@@ -2,9 +2,9 @@ import numpy as np
 from sklearn.metrics import log_loss
 from scipy.optimize import minimize
 from qulacs import QuantumState, Observable, QuantumCircuit, ParametricQuantumCircuit
-from qulacs.gate import DenseMatrix
 
-from qcl_utils import make_fullgate, create_time_evol_gate, min_max_scaling, softmax
+from qcl_utils import create_time_evol_gate, min_max_scaling, softmax
+
 
 class QclClassification:
     """ quantum circuit learningを用いて分類問題を解く"""
@@ -17,19 +17,18 @@ class QclClassification:
         self.nqubit = nqubit
         self.c_depth = c_depth
 
-        self.input_state_list = [] # |ψ_in>のリスト
-        self.theta = [] # θのリスト
+        self.input_state_list = []  # |ψ_in>のリスト
+        self.theta = []  # θのリスト
 
-        self.output_gate = None # U_out
+        self.output_gate = None  # U_out
 
-        self.num_class = num_class # 分類の数（=測定するqubitの数）
+        self.num_class = num_class  # 分類の数（=測定するqubitの数）
 
         # オブザーバブルの準備
         obs = [Observable(nqubit) for _ in range(num_class)]
         for i in range(len(obs)):
-            obs[i].add_operator(1., f'Z {i}') # Z0, Z1, Z3をオブザーバブルとして設定
+            obs[i].add_operator(1., f'Z {i}')  # Z0, Z1, Z3をオブザーバブルとして設定
         self.obs = obs
-
 
     def create_input_gate(self, x):
         # 単一のxをエンコードするゲートを作成する関数
@@ -41,7 +40,7 @@ class QclClassification:
         angle_z = np.arccos(x**2)
 
         for i in range(self.nqubit):
-            if i%2==0:
+            if i % 2 == 0:
                 u.add_RY_gate(i, angle_y[0])
                 u.add_RZ_gate(i, angle_z[0])
             else:
@@ -52,7 +51,7 @@ class QclClassification:
 
     def set_input_state(self, x_list):
         """入力状態のリストを作成"""
-        x_list_normalized = min_max_scaling(x_list) # xを[-1, 1]の範囲にスケール
+        x_list_normalized = min_max_scaling(x_list)  # xを[-1, 1]の範囲にスケール
         
         st_list = []
         
@@ -72,9 +71,9 @@ class QclClassification:
         for d in range(self.c_depth):
             u_out.add_gate(time_evol_gate)
             for i in range(self.nqubit):
-                u_out.add_parametric_RX_gate(i,theta[d,i,0])
-                u_out.add_parametric_RZ_gate(i,theta[d,i,1])
-                u_out.add_parametric_RX_gate(i,theta[d,i,2])
+                u_out.add_parametric_RX_gate(i, theta[d, i, 0])
+                u_out.add_parametric_RZ_gate(i, theta[d, i, 1])
+                u_out.add_parametric_RX_gate(i, theta[d, i, 2])
         self.output_gate = u_out
     
     def update_output_gate(self, theta):
@@ -94,8 +93,8 @@ class QclClassification:
         """x_listに対して、モデルの出力を計算"""
 
         # 入力状態準備
-        st_list = self.input_state_list
-
+        # st_list = self.input_state_list
+        st_list = [st.copy() for st in self.input_state_list]  # ここで各要素ごとにcopy()しないとディープコピーにならない
         # U_outの更新
         self.update_output_gate(theta)
 
@@ -105,30 +104,39 @@ class QclClassification:
             # U_outで状態を更新
             self.output_gate.update_quantum_state(st)
             # モデルの出力
-            r = [o.get_expectation_value(st) for o in self.obs] # 出力多次元ver
+            r = [o.get_expectation_value(st) for o in self.obs]  # 出力多次元ver
             r = softmax(r)
             res.append(r.tolist())
-        
         return np.array(res)
 
     def cost_func(self, theta):
         """コスト関数を計算するクラス
-        :param y_true: 正解ラベルのリスト
         :param theta: 回転ゲートの角度thetaのリスト
         """
-
-        # input_stateを準備
-        # （scipy.optimizeの仕様なのか、
-        # 毎epochのcost_func計算の度にself.input_state_listが変更されてしまう。
-        # なのでここで毎epochごとにsetし直す）
-        self.set_input_state(self.x_list)
 
         y_pred = self.pred(theta)
 
         # cross-entropy loss
-        L = log_loss(self.y_list, y_pred)
+        loss = log_loss(self.y_list, y_pred)
         
-        return L
+        return loss
+
+    # for BFGS
+    def B_grad(self, theta):
+        # dB/dθのリストを返す
+        theta_plus = [theta.copy() + np.eye(len(theta))[i] * np.pi / 2. for i in range(len(theta))]
+        theta_minus = [theta.copy() - np.eye(len(theta))[i] * np.pi / 2. for i in range(len(theta))]
+
+        grad = [(self.pred(theta_plus[i]) - self.pred(theta_minus[i])) / 2. for i in range(len(theta))]
+
+        return np.array(grad)
+
+    # for BFGS
+    def cost_func_grad(self, theta):
+        y_minus_t = self.pred(theta) - self.y_list
+        B_gr_list = self.B_grad(theta)
+        grad = [np.sum(y_minus_t * B_gr) for B_gr in B_gr_list]
+        return np.array(grad)
 
     def fit(self, x_list, y_list, maxiter=1000):
         """
@@ -139,7 +147,8 @@ class QclClassification:
         :return: 学習後のパラメータthetaの値
         """
 
-        self.x_list = x_list
+        # 初期状態生成
+        self.set_input_state(x_list)
 
         # 乱数でU_outを作成
         self.create_initial_output_gate()
@@ -159,11 +168,13 @@ class QclClassification:
         print()
         print('============================================================')
         print("Iteration count...")
-        result  = minimize(self.cost_func, 
-                           self.theta, 
-                           method='Nelder-Mead', 
-                           options={"maxiter":maxiter},
-                           callback=self.callbackF)
+        result = minimize(self.cost_func,
+                          self.theta,
+                          # method='Nelder-Mead',
+                          method='BFGS',
+                          jac=self.cost_func_grad,
+                          options={"maxiter":maxiter},
+                          callback=self.callbackF)
         theta_opt = self.theta
         print('============================================================')
         print()
@@ -180,15 +191,14 @@ class QclClassification:
                 print(f"Iteration: {self.n_iter} / {self.maxiter},   Value of cost_func: {self.cost_func(theta):.4f}")
 
 
-
 def main():
-    ## 乱数のシード
+    # 乱数のシード
     random_seed = 0
-    ## 乱数発生器の初期化
+    # 乱数発生器の初期化
     np.random.seed(random_seed)
 
-    nqubit = 3 ## qubitの数。入出力の次元数よりも多い必要がある
-    c_depth = 2 ## circuitの深さ
+    nqubit = 3  # qubitの数。入出力の次元数よりも多い必要がある
+    c_depth = 2  # circuitの深さ
     num_class = 3
 
     qcl = QclClassification(nqubit, c_depth, num_class)
@@ -198,6 +208,7 @@ def main():
     y_list = np.eye(num_class)[np.random.randint(num_class, size=(n_sample,))]
 
     qcl.fit(x_list, y_list)
+
 
 if __name__ == "__main__":
     main()
