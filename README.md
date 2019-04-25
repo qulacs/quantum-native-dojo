@@ -54,58 +54,58 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 ### 0. そもそも量子コンピュータとは？
 
 ### 1. 量子情報の基礎
-  1. 量子ビット
-  2. 量子ビットに対する基本演算
-  3. 複数量子ビットの記述
-  4. 回路図の基礎
-  ○ コラム：no-cloning theorem, ベルの不等式, CHSH-game
+1. 量子ビット
+1. 量子ビットに対する基本演算
+1. 複数量子ビットの記述
+1. 回路図の基礎
+    - コラム：no-cloning theorem, ベルの不等式, CHSH-game
 
 ### 2. 量子アルゴリズム入門
-  1. NISQアルゴリズムとlong-termアルゴリズム
-  2. アダマールテスト
-  ○コラム：量子乱数生成
-  3. 量子フーリエ変換
-  4. 位相推定アルゴリズム(入門編)
+1. NISQアルゴリズムとlong-termアルゴリズム
+1. アダマールテスト
+    - コラム：量子乱数生成
+1. 量子フーリエ変換
+1. 位相推定アルゴリズム(入門編)
 
 ### 3. 量子アルゴリズムの実行環境
-  1. 世界最高速シミュレータQulacsの使い方
-  2. QiskitとIBM Q Experienceの使い方
+1. 世界最高速シミュレータQulacsの使い方
+1. QiskitとIBM Q Experienceの使い方
 
 ===== 第2部：NISQ編 =====
 ### 4*. 量子ダイナミクスシミュレーション
- 1. シュレディンガー方程式とは、量子ダイナミクスとは
- 2. トロッター展開を用いた量子シミュレーション
+1. シュレディンガー方程式とは、量子ダイナミクスとは
+1. トロッター展開を用いた量子シミュレーション
 
 ### 5. 変分量子回路に基づくアルゴリズム
- 1. Variational Quantum Eigensolver (VQE)
- 2. Quantum Circuit Learning
-  ○ コラム1： Quantum Circuit Learningを用いた分類 
-  ○ コラム2： 量子リザーバコンピューティング
- 3. Quantum Approximate Optimization Algorithm (QAOA)
+1. Variational Quantum Eigensolver (VQE)
+1. Quantum Circuit Learning
+    - コラム1： Quantum Circuit Learningを用いた分類 
+    - コラム2： 量子リザーバコンピューティング
+1. Quantum Approximate Optimization Algorithm (QAOA)
  
 ### 6*. 量子化学計算
- 1. OpenFermionの使い方
- 2. Qulacs を用いた variational quantum eigensolver (VQE) の実装 
- 3. 励起状態の探索手法 (subspace-search variational quantum eigensolver)
+1. OpenFermionの使い方
+1. Qulacs を用いた variational quantum eigensolver (VQE) の実装 
+1. 励起状態の探索手法 (subspace-search variational quantum eigensolver)
  
 ===== 第3部：Long-term編 =====
 ### 7. 位相推定に基づくアルゴリズム
- 1. ~~qRAM~~
- 2. ~~位相推定アルゴリズム（発展編）~~
- 3. ~~実践：位相推定を使った分子の基底状態エネルギー計算~~
- 4. ~~HHLアルゴリズム~~
-   ○ ~~コラム：低ランク行列に対するquantum inspired algorithm~~
- 5. ~~実践：HHLアルゴリズムを用いたポートフォリオ最適化~~
+1. ~~qRAM~~
+1. ~~位相推定アルゴリズム（発展編）~~
+1. ~~実践：位相推定を使った分子の基底状態エネルギー計算~~
+1. ~~HHLアルゴリズム~~
+    - ~~コラム：低ランク行列に対するquantum inspired algorithm~~
+1. ~~実践：HHLアルゴリズムを用いたポートフォリオ最適化~~
 
 ### 8. オラクルアルゴリズム
- 1. ~~オラクルアルゴリズムとは何か~~
- 2. ~~Groverのアルゴリズム~~
- 3. ~~amplitude amplification~~
- 4. ~~amplitude amplificationに基づく量子アルゴリズム~~
+1. ~~オラクルアルゴリズムとは何か~~
+1. ~~Groverのアルゴリズム~~
+1. ~~amplitude amplification~~
+1. ~~amplitude amplificationに基づく量子アルゴリズム~~
 
 ### 9. 量子誤り訂正入門
-  1. 古典誤り訂正
-  2. 量子誤り訂正
+1. 古典誤り訂正
+1. 量子誤り訂正
 
 ## 参考文献
 量子力学・量子コンピュータについてより詳しく知りたい/深く理解したい場合には、以下のような参考書をオススメします。
@@ -125,7 +125,6 @@ https://www.amazon.co.jp/dp/4781910629)」、サイエンス社 (2004)
 ## 本教材の作者
 本教材は[株式会社QunaSys](https://qunasys.com)と以下のContributorの方々によって作製・メンテナンスされています。
 
-### Contributors
 [Keisuke Fujii](http://quantphys.org/wp/keisukefujii/),
 [kwkbr](https://github.com/kwkbtr),
 [MakotoNakai](https://github.com/MakotoNakai),
