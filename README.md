@@ -1,8 +1,8 @@
-# Welcome to Quantum Native Dojo (beta)!
+# Welcome to Quantum Native Dojo !
 
 Quantum Native Dojoは量子コンピュータについて勉強したいと思っている方のために作られた自習教材です。
 
-量子コンピュータの基本的な動作原理から、基礎アルゴリズム、それらを応用してどのように化学計算や金融計算などに役立てるかを学ぶことができます。本教材は誤り訂正の有る量子コンピュータのアルゴリズムの他、数年以内に実用されるであろう誤り訂正のないNISQ (Noisy Intermidiate-Scale Quantum) デバイスのアルゴリズムもカバーしています。
+量子コンピュータの基本的な動作原理から、基礎アルゴリズム、それらを応用してどのように化学計算や金融計算などに役立てるかを学ぶことができます。本教材は誤り訂正の有る量子コンピュータのアルゴリズムの他、数年以内に実用されるであろうNISQ (Noisy Intermidiate-Scale Quantum) デバイスのアルゴリズムもカバーしています。
 
 全ての教材が `Jupyter notebook` で製作され、そのまま Google Colaboratory 上で実行可能になっているので、面倒な環境設定をすることなく学習を始めることが可能です。
 
@@ -49,44 +49,63 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 上記のパッケージをまとめてインストールするには `anaconda3` のインストールが便利です。
 
 
-## 目次 (仮)
-### 1. 量子情報理論入門 
-#### 1.1 量子情報の基礎
-- 量子ビット
-- 基本演算
-- 複数量子ビットの表現
-#### 1.2 量子アルゴリズム入門(アダマールテスト・位相推定)
-- ~~量子フーリエ変換~~
-- アダマールテスト
-- 位相推定アルゴリズム
-- 素因数分解
+## 目次
+===== 第1部：基礎編 =====
+### 0. そもそも量子コンピュータとは？
 
-### 2. 様々な量子アルゴリズム
-1. ~~Groverのアルゴリズム~~
-2. ~~Harrow-Hassidim-Lloydアルゴリズム~~
+### 1. 量子情報の基礎
+  1. 量子ビット
+  2. 量子ビットに対する基本演算
+  3. 複数量子ビットの記述
+  4. 回路図の基礎
+  ○ コラム：no-cloning theorem, ベルの不等式, CHSH-game
 
-### 3. NISQ (Noise Intermidiate-Scale Quantum) アルゴリズム
-1. ~~NISQとは~~
-2. ~~Variational quantum eigensolver (VQE)~~
-3. ~~Quantum Approximate Optimization Algorithm (OAOA)~~
-4. ~~Quantum circuit learning~~
-5. ~~error mitigation technique~~
+### 2. 量子アルゴリズム入門
+  1. NISQアルゴリズムとlong-termアルゴリズム
+  2. アダマールテスト
+   ○コラム：量子乱数生成
+  3. 量子フーリエ変換
+  4. 位相推定アルゴリズム(入門編)
 
-### 4. NISQの実機を触ってみる
-1. ~~IBM Q Experienceの実行とQuantum Volumeの測定~~
+### 3. 量子アルゴリズムの実行環境
+  1. 世界最高速シミュレータQulacsの使い方
+  2. QiskitとIBM Q Experienceの使い方
 
-### 5. 量子化学計算実践
-1. ~~Openfermionの使い方~~
-2. ~~位相推定・VQEを使って分子の基底状態エネルギーを求めてみる (H2, LiH, etc)~~
-3. ~~励起状態を求める (subspace-variational quantum eigensolver)~~
+===== 第2部：NISQ編 =====
+### 4*. 量子ダイナミクスシミュレーション
+ 1. シュレディンガー方程式とは、量子ダイナミクスとは
+ 2. トロッター展開を用いた量子シミュレーション
 
-### 6. 量子機械学習実践
-1. ~~HHLアルゴリズムを用いたポートフォリオ最適化~~
-2. ~~Quantum circuit learningを用いた分類器作製~~
+### 5. 変分量子回路に基づくアルゴリズム
+ 1. Variational Quantum Eigensolver (VQE)
+ 2. Quantum Circuit Learning
+  ○ コラム1： Quantum Circuit Learningを用いた分類 
+  ○ コラム2： 量子リザーバコンピューティング
+ 3. Quantum Approximate Optimization Algorithm (QAOA)
+ 
+### 6*. 量子化学計算
+ 1. OpenFermionの使い方
+ 2. Qulacs を用いた variational quantum eigensolver (VQE) の実装 
+ 3. 励起状態の探索手法 (subspace-search variational quantum eigensolver)
+ 
+===== 第3部：Long-term編 =====
+### 7. 位相推定に基づくアルゴリズム
+ 1. ~~qRAM~~
+ 2. ~~位相推定アルゴリズム（発展編）~~
+ 3. ~~実践：位相推定を使った分子の基底状態エネルギー計算~~
+ 4. ~~HHLアルゴリズム~~
+   ○ ~~コラム：低ランク行列に対するquantum inspired algorithm~~
+ 5. ~~実践：HHLアルゴリズムを用いたポートフォリオ最適化~~
 
-### 7. 誤り訂正理論
-1. ~~古典誤り訂正と量子誤り訂正~~
+### 8. オラクルアルゴリズム
+ 1. ~~オラクルアルゴリズムとは何か~~
+ 2. ~~Groverのアルゴリズム~~
+ 3. ~~amplitude amplification~~
+ 4. ~~amplitude amplificationに基づく量子アルゴリズム~~
 
+### 9. 量子誤り訂正入門
+  1. 古典誤り訂正
+  2. 量子誤り訂正
 
 ## 参考文献
 量子力学・量子コンピュータについてより詳しく知りたい/深く理解したい場合には、以下のような参考書をオススメします。
@@ -114,3 +133,6 @@ https://www.amazon.co.jp/dp/4781910629)」、サイエンス社 (2004)
 [Kosuke Mitarai](https://scholar.google.com/citations?user=TfsGcnMAAAAJ),
 [Yuya-O-Nakagawa](https://scholar.google.co.jp/citations?user=LyU8LXsAAAAJ),
 [yamamoto-takahiro](https://github.com/yamamoto-takahiro)
+
+## リリース履歴
+- 2019/4/26: v0.1.0をリリースしました。 
