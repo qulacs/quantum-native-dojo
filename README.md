@@ -19,6 +19,8 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 - 簡単な関数(sin, cos, exp, ...)の微積分
 - 行列とベクトルの掛け算、対角化とは何か
 
+こちらの前提知識及びPython・NumPyの使用に不安がある方は、[Chainer Tutorial](https://tutorials.chainer.org/ja/tutorial.html)の1. ~ 12.を先に学習することをオススメします。
+
 ## 教材の進め方
 基本的に、このレポジトリの"notebook"フォルダ以下にある `Jupyter notebook` を読みながら/実行しながら進めていきましょう。
 各 `Jupyter notebook` は `Google Colabolatory` で実行することができるので、自前で環境を構築する必要はありません。
