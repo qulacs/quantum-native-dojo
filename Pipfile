@@ -4,10 +4,10 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-nbsphinx = "*"
-ipython = "*"
 
 [packages]
+nbsphinx = "*"
+ipython = "*"
 
 [requires]
 python_version = "3"
