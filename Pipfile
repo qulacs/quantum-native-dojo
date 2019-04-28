@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 nbsphinx = "*"
 ipython = "*"
+sphinx-rtd-theme = "*"
 
 [requires]
 python_version = "3"

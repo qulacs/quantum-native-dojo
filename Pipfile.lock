@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b8fc2036135f4fdbcde74c9d64dfa19972ae8f55fa849f3ff1ced3c61b6ff43f"
+            "sha256": "8e3c27543120b999eea4b6e32e8436709d34a791a740a0e6c0aab6cc765731a7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -325,6 +325,14 @@
                 "sha256:de930f42600a4fef993587633984cc5027dedba2464bcf00ddace26b40f8d9ce"
             ],
             "version": "==2.0.1"
+        },
+        "sphinx-rtd-theme": {
+            "hashes": [
+                "sha256:00cf895504a7895ee433807c62094cf1e95f065843bf3acd17037c3e9a2becd4",
+                "sha256:728607e34d60456d736cc7991fd236afb828b21b82f956c5ea75f94c8414040a"
+            ],
+            "index": "pypi",
+            "version": "==0.4.3"
         },
         "sphinxcontrib-applehelp": {
             "hashes": [
