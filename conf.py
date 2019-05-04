@@ -53,11 +53,8 @@ exclude_patterns = ['_build', '**.ipynb_checkpoints', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'sphinx_rtd_theme'
-html_theme_options = {
-    'display_version': False,
-    'style_nav_header_background': '#47A6A0'
-}
+html_theme = 'sphinx_qndojo_theme'
+html_theme_path = ['.']
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
