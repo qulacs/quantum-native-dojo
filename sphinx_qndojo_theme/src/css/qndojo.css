@@ -38,6 +38,10 @@ div.nbinput div.prompt.prompt pre {
     color: #22137B;
 }
 
+.wy-nav-top {
+    background: #47A6A0;
+}
+
 body {
     font-family: "Yakumono", "Source Serif Pro", "Noto Serif JP", "Hiragino Mincho ProN", serif;
     font-size-adjust: 0.506;
