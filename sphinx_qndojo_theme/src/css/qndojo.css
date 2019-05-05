@@ -19,7 +19,12 @@
          url('../fonts/SourceSerifPro-It.ttf.woff') format('woff');
 }
 
+@font-face {
+    font-family: "Yakumono" ;
+    src: url('../fonts/YakuCaltMincho-R.woff') format('woff');
+}
+
 body {
-    font-family: "Source Serif Pro", "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    font-family: "Yakumono", "Source Serif Pro", "Noto Serif JP", "Hiragino Mincho ProN", serif;
     font-size-adjust: 0.51;
 }
