@@ -24,6 +24,20 @@
     src: url('../fonts/YakuCaltMincho-R.woff') format('woff');
 }
 
+a,
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+    color: #47A6A0;
+}
+
+.rst-content tt.literal, .rst-content tt.literal, .rst-content code.literal,
+div.nboutput div.prompt.prompt pre {
+    color: #FB2A58;
+}
+
+div.nbinput div.prompt.prompt pre {
+    color: #22137B;
+}
+
 body {
     font-family: "Yakumono", "Source Serif Pro", "Noto Serif JP", "Hiragino Mincho ProN", serif;
     font-size-adjust: 0.506;
