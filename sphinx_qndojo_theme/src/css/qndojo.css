@@ -1,1 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
 @import 'theme.css';
+
+@font-face{
+    font-family: 'Source Serif Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('../fonts/SourceSerifPro-Regular.ttf.woff2') format('woff2'),
+         url('../fonts/SourceSerifPro-Regular.ttf.woff') format('woff');
+}
+
+@font-face{
+    font-family: 'Source Serif Pro';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('../fonts/SourceSerifPro-It.ttf.woff2') format('woff2'),
+         url('../fonts/SourceSerifPro-It.ttf.woff') format('woff');
+}
+
+body {
+    font-family: "Source Serif Pro", "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    font-size-adjust: 0.51;
+}

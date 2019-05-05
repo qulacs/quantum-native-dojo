@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
 @import 'theme.css';
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9jc3MvcW5kb2pvLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxtQkFBbUIiLCJmaWxlIjoicW5kb2pvLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgJ3RoZW1lLmNzcyc7XG4iXX0= */
+@font-face{
+    font-family: 'Source Serif Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('../fonts/SourceSerifPro-Regular.ttf.woff2') format('woff2'),
+         url('../fonts/SourceSerifPro-Regular.ttf.woff') format('woff');
+}
+
+@font-face{
+    font-family: 'Source Serif Pro';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('../fonts/SourceSerifPro-It.ttf.woff2') format('woff2'),
+         url('../fonts/SourceSerifPro-It.ttf.woff') format('woff');
+}
+
+body {
+    font-family: "Source Serif Pro", "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    font-size-adjust: 0.51;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9jc3MvcW5kb2pvLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxvRUFBb0U7QUFDcEUsbUJBQW1COztBQUVuQjtJQUNJLCtCQUErQjtJQUMvQixnQkFBZ0I7SUFDaEIsa0JBQWtCO0lBQ2xCLG9CQUFvQjtJQUNwQjt1RUFDbUU7QUFDdkU7O0FBRUE7SUFDSSwrQkFBK0I7SUFDL0IsZ0JBQWdCO0lBQ2hCLGtCQUFrQjtJQUNsQixvQkFBb0I7SUFDcEI7a0VBQzhEO0FBQ2xFOztBQUVBO0lBQ0ksK0VBQStFO0lBQy9FLHNCQUFzQjtBQUMxQiIsImZpbGUiOiJxbmRvam8uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCB1cmwoJ2h0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1Ob3RvK1NlcmlmK0pQJyk7XG5AaW1wb3J0ICd0aGVtZS5jc3MnO1xuXG5AZm9udC1mYWNle1xuICAgIGZvbnQtZmFtaWx5OiAnU291cmNlIFNlcmlmIFBybyc7XG4gICAgZm9udC13ZWlnaHQ6IDQwMDtcbiAgICBmb250LXN0eWxlOiBub3JtYWw7XG4gICAgZm9udC1zdHJldGNoOiBub3JtYWw7XG4gICAgc3JjOiB1cmwoJy4uL2ZvbnRzL1NvdXJjZVNlcmlmUHJvLVJlZ3VsYXIudHRmLndvZmYyJykgZm9ybWF0KCd3b2ZmMicpLFxuICAgICAgICAgdXJsKCcuLi9mb250cy9Tb3VyY2VTZXJpZlByby1SZWd1bGFyLnR0Zi53b2ZmJykgZm9ybWF0KCd3b2ZmJyk7XG59XG5cbkBmb250LWZhY2V7XG4gICAgZm9udC1mYW1pbHk6ICdTb3VyY2UgU2VyaWYgUHJvJztcbiAgICBmb250LXdlaWdodDogNDAwO1xuICAgIGZvbnQtc3R5bGU6IGl0YWxpYztcbiAgICBmb250LXN0cmV0Y2g6IG5vcm1hbDtcbiAgICBzcmM6IHVybCgnLi4vZm9udHMvU291cmNlU2VyaWZQcm8tSXQudHRmLndvZmYyJykgZm9ybWF0KCd3b2ZmMicpLFxuICAgICAgICAgdXJsKCcuLi9mb250cy9Tb3VyY2VTZXJpZlByby1JdC50dGYud29mZicpIGZvcm1hdCgnd29mZicpO1xufVxuXG5ib2R5IHtcbiAgICBmb250LWZhbWlseTogXCJTb3VyY2UgU2VyaWYgUHJvXCIsIFwiTm90byBTZXJpZiBKUFwiLCBcIkhpcmFnaW5vIE1pbmNobyBQcm9OXCIsIHNlcmlmO1xuICAgIGZvbnQtc2l6ZS1hZGp1c3Q6IDAuNTE7XG59XG4iXX0= */
