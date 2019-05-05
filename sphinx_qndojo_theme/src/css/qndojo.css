@@ -48,6 +48,7 @@ body {
 b, strong,
 h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend,
 .wy-side-nav-search > a, .wy-side-nav-search .wy-dropdown > a,
+.wy-nav-top,
 input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"],
 .wy-menu-vertical,
 .wy-breadcrumbs,
