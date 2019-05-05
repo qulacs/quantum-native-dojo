@@ -26,5 +26,34 @@
 
 body {
     font-family: "Yakumono", "Source Serif Pro", "Noto Serif JP", "Hiragino Mincho ProN", serif;
-    font-size-adjust: 0.51;
+    font-size-adjust: 0.506;
+    font-kerning: none;
+    line-break: loose;
+}
+
+p,
+.rst-content .line-block {
+    margin-bottom: 1.8em;
+    line-height: 1.8;
+}
+
+@media (max-width: 25.3em) {
+    p,
+    .rst-content .line-block {
+        margin-bottom: 1.65em;
+        line-height: 1.65;
+    }
+}
+
+.wy-nav-content-wrap {
+    background: none;
+}
+
+.wy-nav-content {
+    box-sizing: content-box;
+    max-width: 40em;
+}
+
+.math {
+    overflow: auto;
 }
