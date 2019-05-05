@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700|Noto+Serif+JP');
 @import 'theme.css';
 
 @font-face{
@@ -31,6 +31,17 @@ body {
     line-break: loose;
 }
 
+b, strong,
+h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend,
+.wy-side-nav-search > a, .wy-side-nav-search .wy-dropdown > a,
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"],
+.wy-menu-vertical,
+.wy-breadcrumbs,
+footer,
+.btn {
+    font-family: "Noto Sans JP", sans-serif;
+}
+
 p,
 .rst-content .line-block {
     margin-bottom: 1.8em;
@@ -43,6 +54,20 @@ p,
         margin-bottom: 1.65em;
         line-height: 1.65;
     }
+}
+
+h1 {
+    margin-bottom: 0.5em;
+}
+
+h2, .rst-content .toctree-wrapper p.caption {
+    font-size: 1.25em;
+    margin-bottom: 0.25em;
+}
+
+h3 {
+    font-size: 1em;
+    margin-bottom: 0;
 }
 
 .wy-nav-content-wrap {
