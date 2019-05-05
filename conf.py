@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'quantum-native-dojo'
+project = 'Quantum Native Dojo'
 copyright = '2019, Quantum Native Dojo Contributors'
 author = 'Quantum Native Dojo Contributors'
 
