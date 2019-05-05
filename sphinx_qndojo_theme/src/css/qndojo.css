@@ -91,6 +91,10 @@ h3 {
     margin-bottom: 0;
 }
 
+code, .rst-content tt, .rst-content code {
+    font-size: 90%;
+}
+
 .wy-nav-content-wrap {
     background: none;
 }
