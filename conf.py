@@ -69,5 +69,6 @@ html_show_sphinx = False
 mathjax_path = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML'
 mathjax_config = {
     'CommonHTML': {
+        'undefinedFamily': '"Source Serif Pro", "Yakumono", "Noto Serif JP", "Hiragino Mincho ProN", "STIXGeneral", "Arial Unicode MS", serif'
     }
 }
