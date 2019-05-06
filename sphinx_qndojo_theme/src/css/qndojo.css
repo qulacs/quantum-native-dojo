@@ -29,6 +29,18 @@ a,
     color: #47A6A0;
 }
 
+.rst-content a {
+    color: #357b77;
+}
+
+.rst-content a:hover {
+    color: #55b6b0;
+}
+
+.rst-content a:visited {
+    color: #735fe6;
+}
+
 .rst-content tt.literal, .rst-content tt.literal, .rst-content code.literal,
 div.nboutput div.prompt.prompt pre {
     color: #FB2A58;
