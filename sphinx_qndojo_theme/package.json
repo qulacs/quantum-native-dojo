@@ -2,8 +2,10 @@
   "name": "sphinx_qndojo_theme",
   "version": "0.1.0",
   "scripts": {
+    "clean:html": "rm -rf ../_build/html",
     "build:css": "postcss src/css/*.css --use autoprefixer -d static/css/",
-    "build:sphinx": "cd .. && rm -rf _build/html && make html",
+    "build:sphinx": "cd .. && make html",
+    "clean-build:sphinx": "run-s clean:html build:sphinx",
     "copy:static": "cpx 'static/**/*' ../_build/html/_static --update",
     "watch": "npm-watch",
     "serve": "browser-sync --watch --reload-debounce=300 ../_build/html",
@@ -19,8 +21,18 @@
     },
     "build:sphinx": {
       "patterns": [
-        "*.html"
+        "../index.rst",
+        "../notebooks/**/*"
       ],
+      "extensions": "*",
+      "runOnChangeOnly": true
+    },
+    "clean-build:sphinx": {
+      "patterns": [
+        "*.html",
+        "../conf.py"
+      ],
+      "extensions": "*",
       "runOnChangeOnly": true
     },
     "copy:static": {
