@@ -125,3 +125,7 @@ code, .rst-content tt, .rst-content code {
     font-style: normal;
     padding: 0 3px;
 }
+
+.wy-table th p:last-child, .rst-content table.docutils th p:last-child, .rst-content table.field-list th p:last-child {
+    margin-bottom: 0;
+}
