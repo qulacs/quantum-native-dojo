@@ -55,7 +55,7 @@ div.nbinput div.prompt.prompt pre {
 }
 
 body {
-    font-family: "Yakumono", "Source Serif Pro", "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    font-family: "Source Serif Pro", "Yakumono", "Noto Serif JP", "Hiragino Mincho ProN", serif;
     font-size-adjust: 0.506;
     font-kerning: none;
     line-break: loose;
