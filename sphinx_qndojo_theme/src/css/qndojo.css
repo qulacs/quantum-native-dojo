@@ -102,9 +102,6 @@ code, .rst-content tt, .rst-content code {
 .wy-nav-content {
     box-sizing: content-box;
     max-width: 40em;
-}
-
-.math {
     overflow: auto;
 }
 
