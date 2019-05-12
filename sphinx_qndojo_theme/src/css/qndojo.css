@@ -129,3 +129,7 @@ code, .rst-content tt, .rst-content code {
 .wy-table th p:last-child, .rst-content table.docutils th p:last-child, .rst-content table.field-list th p:last-child {
     margin-bottom: 0;
 }
+
+.open-in-colab {
+    line-height: 1;
+}
