@@ -73,6 +73,7 @@ footer,
 #search-results .search li a,
 .rst-content .highlighted {
     font-family: "Noto Sans JP", sans-serif;
+    font-size-adjust: none;
 }
 
 p,
@@ -128,6 +129,15 @@ code, .rst-content tt, .rst-content code {
 
 .wy-table th p:last-child, .rst-content table.docutils th p:last-child, .rst-content table.field-list th p:last-child {
     margin-bottom: 0;
+}
+
+.wy-breadcrumbs-aside {
+    font-size: 0.875rem;
+}
+
+.wy-breadcrumbs .wy-breadcrumbs-aside a {
+    padding-top: 4px;
+    padding-bottom: 0;
 }
 
 .open-in-colab {
