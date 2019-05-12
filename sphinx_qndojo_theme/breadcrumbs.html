@@ -11,7 +11,7 @@
 
 {% block breadcrumbs_aside %}
   <li class="wy-breadcrumbs-aside open-in-colab">
-    {% if hasdoc(pagename) %}
+    {% if hasdoc(pagename) and suffix == '.ipynb' %}
       <a href="https://colab.research.google.com/github/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"></a>
     {% endif %}
   </li>
