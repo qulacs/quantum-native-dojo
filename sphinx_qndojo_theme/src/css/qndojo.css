@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700|Noto+Serif+JP');
+@import 'theme.css';
+
+@font-face{
+    font-family: 'Source Serif Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('../fonts/SourceSerifPro-Regular.ttf.woff2') format('woff2'),
+         url('../fonts/SourceSerifPro-Regular.ttf.woff') format('woff');
+}
+
+@font-face{
+    font-family: 'Source Serif Pro';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('../fonts/SourceSerifPro-It.ttf.woff2') format('woff2'),
+         url('../fonts/SourceSerifPro-It.ttf.woff') format('woff');
+}
+
+@font-face {
+    font-family: "Yakumono" ;
+    src: url('../fonts/YakuCaltMincho-R.woff') format('woff');
+}
+
+a,
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+    color: #47A6A0;
+}
+
+.rst-content a {
+    color: #357b77;
+}
+
+.rst-content a:hover {
+    color: #55b6b0;
+}
+
+.rst-content a:visited {
+    color: #735fe6;
+}
+
+.rst-content tt.literal, .rst-content tt.literal, .rst-content code.literal,
+div.nboutput div.prompt.prompt pre {
+    color: #FB2A58;
+}
+
+div.nbinput div.prompt.prompt pre {
+    color: #22137B;
+}
+
+.wy-nav-top {
+    background: #47A6A0;
+}
+
+body {
+    font-family: "Source Serif Pro", "Yakumono", "Noto Serif JP", "Hiragino Mincho ProN", serif;
+    font-size-adjust: 0.506;
+    font-kerning: none;
+    line-break: loose;
+}
+
+b, strong,
+h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend,
+.wy-side-nav-search > a, .wy-side-nav-search .wy-dropdown > a,
+.wy-nav-top,
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="date"], input[type="month"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="week"], input[type="number"], input[type="search"], input[type="tel"], input[type="color"],
+.wy-menu-vertical,
+.wy-breadcrumbs,
+footer,
+.btn,
+#search-results .search li a,
+.rst-content .highlighted {
+    font-family: "Noto Sans JP", sans-serif;
+    font-size-adjust: none;
+}
+
+p,
+.rst-content .line-block {
+    margin-bottom: 1.8em;
+    line-height: 1.8;
+}
+
+@media (max-width: 25.3em) {
+    p,
+    .rst-content .line-block {
+        margin-bottom: 1.65em;
+        line-height: 1.65;
+    }
+}
+
+h1 {
+    margin-bottom: 0.5em;
+}
+
+h2, .rst-content .toctree-wrapper p.caption {
+    font-size: 1.25em;
+    margin-bottom: 0.25em;
+}
+
+h3 {
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+code, .rst-content tt, .rst-content code {
+    font-size: 90%;
+}
+
+.wy-nav-content-wrap {
+    background: none;
+}
+
+.wy-nav-content {
+    box-sizing: content-box;
+    max-width: 40em;
+    overflow: auto;
+}
+
+.rst-versions.rst-versions.rst-versions {
+    display: none;
+}
+
+.rst-content .highlighted {
+    font-style: normal;
+    padding: 0 3px;
+}
+
+.wy-table th p:last-child, .rst-content table.docutils th p:last-child, .rst-content table.field-list th p:last-child {
+    margin-bottom: 0;
+}
+
+.wy-breadcrumbs-aside {
+    font-size: 0.875rem;
+}
+
+.wy-breadcrumbs .wy-breadcrumbs-aside a {
+    padding-top: 4px;
+    padding-bottom: 0;
+}
+
+.open-in-colab {
+    line-height: 1;
+}
