@@ -6,7 +6,7 @@ Quantum Native Dojoは量子コンピュータについて勉強したいと思�
 
 全ての教材が `Jupyter notebook` で製作され、そのまま Google Colaboratory 上で実行可能になっているので、面倒な環境設定をすることなく学習を始めることが可能です。
 
-なお、ウェブサイト版もありますので、合わせてご利用下さい。
+なお、ウェブサイト版もありますので、合わせてご利用下さい。  
 https://dojo.qulacs.org
 
 ## この教材の意義： Becoming Quantum Native
