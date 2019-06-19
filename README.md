@@ -1,5 +1,7 @@
 # Welcome to Quantum Native Dojo !
 
+http://dojo.qulacs.org
+
 Quantum Native Dojoは量子コンピュータについて勉強したいと思っている方のために作られた自習教材です。
 
 量子コンピュータの基本的な動作原理から、基礎アルゴリズム、それらを応用してどのように化学計算や金融計算などに役立てるかを学ぶことができます。本教材は誤り訂正の有る量子コンピュータのアルゴリズムの他、数年以内に実用されるであろうNISQ (Noisy Intermidiate-Scale Quantum) デバイスのアルゴリズムもカバーしています。
