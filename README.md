@@ -6,6 +6,9 @@ Quantum Native Dojoは量子コンピュータについて勉強したいと思�
 
 全ての教材が `Jupyter notebook` で製作され、そのまま Google Colaboratory 上で実行可能になっているので、面倒な環境設定をすることなく学習を始めることが可能です。
 
+なおウェブサイト版もありますので、合わせてご利用下さい。  
+https://dojo.qulacs.org
+
 ## この教材の意義： Becoming Quantum Native
 量子コンピュータは、量子力学の原理に基づいて計算を行います。一方、私達がふだん目にする物理現象は主に古典力学に支配されています。ここに「量子コンピュータは難しい」と思われる原因の一端があります。
 
@@ -18,6 +21,8 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 - 複素数とは何か
 - 簡単な関数(sin, cos, exp, ...)の微積分
 - 行列とベクトルの掛け算、対角化とは何か
+
+こちらの前提知識及びPython・NumPyの使用に不安がある方は、[Chainer Tutorial](https://tutorials.chainer.org/ja/tutorial.html)の1. ~ 12.を先に学習することをオススメします。
 
 ## 教材の進め方
 基本的に、このレポジトリの"notebook"フォルダ以下にある `Jupyter notebook` を読みながら/実行しながら進めていきましょう。

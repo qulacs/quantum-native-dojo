@@ -1,0 +1,34 @@
+{% extends "sphinx_rtd_theme/breadcrumbs.html" %}
+{% set favicon = 'empty.ico' %}
+
+{% block breadcrumbs %}
+  <li><a href="{{ pathto(master_doc) }}">{{ _('ホーム') }}</a> &raquo;</li>
+    {% for doc in parents %}
+      <li><a href="{{ doc.link|e }}">{{ doc.title }}</a> &raquo;</li>
+    {% endfor %}
+  <li>{{ title }}</li>
+{% endblock %}
+
+{% block breadcrumbs_aside %}
+  <li class="wy-breadcrumbs-aside open-in-colab">
+    {% if hasdoc(pagename) and suffix == '.ipynb' %}
+      <a href="https://colab.research.google.com/github/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" target="_blank"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab"></a>
+    {% endif %}
+  </li>
+  <li class="wy-breadcrumbs-aside">
+    {% if hasdoc(pagename) %}
+        {% if display_github %}
+        {% if check_meta and 'github_url' in meta %}
+          <!-- User defined GitHub URL -->
+          <a href="{{ meta['github_url'] }}" class="fa fa-github" target="_blank"> {{ _('Edit on GitHub') }}</a>
+        {% else %}
+          <a href="https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/{{ theme_vcs_pageview_mode|default("blob") }}/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}" class="fa fa-github" target="_blank"> {{ _('Edit on GitHub') }}</a>
+        {% endif %}
+        {% elif show_source and source_url_prefix %}
+          <a href="{{ source_url_prefix }}{{ pagename }}{{ suffix }}" target="_blank">{{ _('View page source') }}</a>
+        {% elif show_source and has_source and sourcename %}
+          <a href="{{ pathto('_sources/' + sourcename, true)|e }}" rel="nofollow" target="_blank"> {{ _('View page source') }}</a>
+        {% endif %}
+    {% endif %}
+  </li>
+{% endblock %}
