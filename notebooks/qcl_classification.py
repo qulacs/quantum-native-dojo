@@ -1,8 +1,7 @@
 import numpy as np
+from qulacs import QuantumState, Observable, QuantumCircuit, ParametricQuantumCircuit
 from sklearn.metrics import log_loss
 from scipy.optimize import minimize
-from qulacs import QuantumState, Observable, QuantumCircuit, ParametricQuantumCircuit
-
 from qcl_utils import create_time_evol_gate, min_max_scaling, softmax
 
 
