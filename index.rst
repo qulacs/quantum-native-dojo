@@ -38,4 +38,6 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
    notebooks/4_quantum_dynamics_simulation
    notebooks/5_VQC_based_algorithms
    notebooks/6_quantum_chemistry_calculation
+   notebooks/7_quantum_phase_estimation
+   notebooks/8_quantum_search_algorithm
    notebooks/9_quantum_error_correction
