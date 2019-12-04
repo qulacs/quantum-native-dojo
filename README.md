@@ -56,61 +56,57 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 
 ## 目次
 ===== 第1部：基礎編 =====
-### 0. そもそも量子コンピュータとは？
-
-### 1. 量子情報の基礎
-1. 量子ビット
-1. 量子ビットに対する基本演算
-1. 複数量子ビットの記述
-1. 回路図の基礎
-    - コラム：no-cloning theorem, ベルの不等式, CHSH-game
-
-### 2. 量子アルゴリズム入門
-1. NISQアルゴリズムとlong-termアルゴリズム
-1. アダマールテスト
-    - コラム：量子乱数生成
-1. 量子フーリエ変換
-1. 位相推定アルゴリズム(入門編)
-
-### 3. 量子アルゴリズムの実行環境
-1. 世界最高速シミュレータQulacsの使い方
-1. QiskitとIBM Q Experienceの使い方
+- 第0章 そもそも量子コンピュータとは？
+- 第1章 量子情報の基礎
+  - 1-1. 量子ビット
+  - 1-2. 量子ビットに対する基本演算
+  - 1-3. 複数量子ビットの記述
+  - コラム：ユニバーサルゲートセットとは
+  - 1-4. 回路図の基礎
+  - コラム1：量子複製不可能 (No-Cloning) 定理
+  - コラム2：Bell (CHSH) 不等式
+- 第2章 量子アルゴリズム入門
+  - 2-1. NISQアルゴリズムとlong-termアルゴリズム
+  - 2-2. アダマールテスト
+  - コラム：量子乱数生成
+  - 2-3. 量子フーリエ変換
+  - 2-4. 位相推定アルゴリズム（入門編）
+- 第3章 量子アルゴリズムの実行環境
+  - 3-1. 世界最高速シミュレータQulacsの使い方
+  - 3-2. QiskitとIBM Q Experienceの使い方
 
 ===== 第2部：NISQ編 =====
-### 4*. 量子ダイナミクスシミュレーション
-1. シュレディンガー方程式とは、量子ダイナミクスとは
-1. トロッター展開を用いた量子シミュレーション
 
-### 5. 変分量子回路に基づくアルゴリズム
-1. Variational Quantum Eigensolver (VQE)
-1. Quantum Circuit Learning
-    - コラム1： Quantum Circuit Learningを用いた分類 
-    - コラム2： 量子リザーバコンピューティング
-1. Quantum Approximate Optimization Algorithm (QAOA)
- 
-### 6*. 量子化学計算
-1. OpenFermionの使い方
-1. Qulacs を用いた variational quantum eigensolver (VQE) の実装 
-1. 励起状態の探索手法 (subspace-search variational quantum eigensolver)
- 
+- 第4章 量子ダイナミクスシミュレーション
+  - 4-1. シュレディンガー方程式とは、量子ダイナミクスとは
+  - 4-2. トロッター分解を用いた量子シミュレーション
+- 第5章 変分量子回路に基づくアルゴリズム
+  - 5-1. Variational QuantumEigensolver（VQE）アルゴリズム
+  - 5-2. Quantum Circuitlearning
+  - コラム：Quantum CircuitLearningを用いた分類
+  - コラム：量子リザーバコンピューティング
+  - 5-3. Quantum Approximate Optimazation Algorithm (QAOA):量子近似最適化アルゴリズム
+- 第6章 量子化学計算
+  - 6-1. OpenFermionの使い方
+  - 6-2. Qulacs を用いた variational quantum eigensolver (VQE)の実装
+  - 6-3. 励起状態の探索手法 (subspace-search variational quantumeigensolver)
+
 ===== 第3部：Long-term編 =====
-### 7. 位相推定に基づくアルゴリズム
-1. ~~qRAM~~
-1. ~~位相推定アルゴリズム（発展編）~~
-1. ~~実践：位相推定を使った分子の基底状態エネルギー計算~~
-1. ~~Harrow-Hassidim-Lloydアルゴリズム~~
-    - ~~コラム：低ランク行列に対するquantum inspired algorithm~~
-1. ~~実践：Harrow-Hassidim-Lloydアルゴリズムを用いたポートフォリオ最適化~~
+- 第7章 量子位相推定アルゴリズムの発展
+  - 7-1. 量子位相推定アルゴリズム詳説：水素分子への応用を例として
+  - 7-2. Harrow-Hassidim-Lloyd (HHL)アルゴリズム
+  - コラム：量子ランダムアクセスメモリー(qRAM)
+  - 7-3. HHLアルゴリズムを用いたポートフォリオ最適化
+  - コラム：低ランク行列に対する高速な特異値分解とサンプリング（量子-inspiredアルゴリズム
+- 第8章 量子探索アルゴリズム
+  - 8-1. オラクル
+  - 8-2. グローバーのアルゴリズム
+- 第9章 量子誤り訂正
+  - 9-1. 古典エラー
+  - 9-2. 量子エラー
+ 
 
-### 8. オラクルアルゴリズム
-1. ~~オラクルアルゴリズムとは何か~~
-1. ~~Groverのアルゴリズム~~
-1. ~~amplitude amplification~~
-1. ~~amplitude amplificationに基づく量子アルゴリズム~~
-
-### 9. 量子誤り訂正入門
-1. 古典誤り訂正
-1. 量子誤り訂正
+`*`がついている章は、物理や化学の専門的知識が必要
 
 ## 参考文献
 量子力学・量子コンピュータについてより詳しく知りたい/深く理解したい場合には、以下のような参考書をオススメします。
@@ -139,4 +135,5 @@ https://www.amazon.co.jp/dp/4781910629)」、サイエンス社 (2004)
 [yamamoto-takahiro](https://github.com/yamamoto-takahiro)
 
 ## リリース履歴
-- 2019/4/26: v0.1.0をリリースしました。 
+- 2019/4/26: v0.1.0をリリースしました。
+- 2019/12/5: v1.0.0をリリースしました。 
