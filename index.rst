@@ -41,3 +41,11 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
    notebooks/7_quantum_phase_estimation
    notebooks/8_quantum_search_algorithm
    notebooks/9_quantum_error_correction
+
+
+運営・サポート
+--------------
+
+運営： `株式会社QunaSys <https://qunasys.com>`_ 
+
+ご意見・ご要望・質問： `Qulacs Slack Community <https://join.slack.com/t/qulacs/shared_invite/enQtNzY1OTM5MDYxMjAxLWM1ZDc3MzdiNjZhZjdmYTQ5MTJiOTEzZjI3ZjAwZTg0OGFiNjcxY2VjZWRjMWY0YjE5ZTViOWQzZTliYzdmYzY>`_ にお寄せ下さい。
