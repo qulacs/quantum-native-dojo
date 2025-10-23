@@ -85,3 +85,8 @@ html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "")
 # Tell Jinja2 templates the build is running on Read the Docs
 if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
+
+html_static_path = ['_static']
+html_js_files = ['sidebar-contact.js']     # ← 追加
+# # 任意: CSSも使うなら
+# html_css_files = ['custom.css']
