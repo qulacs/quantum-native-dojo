@@ -69,3 +69,9 @@ traitlets==5.14.3; python_version >= '3.8'
 urllib3==2.2.2; python_version >= '3.8'
 wcwidth==0.2.13
 webencodings==0.5.1
+
+# Notebook execution dependencies
+ipykernel==6.29.5
+numpy==1.26.4
+sympy==1.14.0
+quri-parts[qulacs]

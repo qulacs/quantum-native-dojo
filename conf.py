@@ -32,6 +32,12 @@ extensions = [
     "sphinx.ext.mathjax",
 ]
 
+# notebooks はビルド時に実行する。
+# Read the Docs 環境での kernelspec 差異を避けるため、利用するカーネル名を明示する。
+nbsphinx_execute = "auto"
+nbsphinx_kernel_name = "python3"
+nbsphinx_timeout = 300
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
@@ -45,7 +51,14 @@ language = "ja"
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ["_build", "**.ipynb_checkpoints", "Thumbs.db", ".DS_Store"]
+exclude_patterns = [
+    "_build",
+    "**.ipynb_checkpoints",
+    "Thumbs.db",
+    ".DS_Store",
+    "notebooks/obsolete",
+    "notebooks/obsolete/**",
+]
 
 
 # -- Options for HTML output -------------------------------------------------
