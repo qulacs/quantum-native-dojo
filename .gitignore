@@ -8,3 +8,5 @@ _build
 node_modules
 
 .python-version
+
+book.pdf
