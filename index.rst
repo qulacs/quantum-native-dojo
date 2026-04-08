@@ -31,7 +31,6 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
    :maxdepth: 2
    :caption: 目次
 
-   notebooks/0_quantum_computing_basics
    notebooks/1_foundations_of_quantum_information_science
    notebooks/2_introduction_to_quantum_algorithms
    notebooks/3_programming_quantum_algorithms_with_quri_parts
