@@ -39,15 +39,14 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
    :maxdepth: 2
    :caption: 目次
 
-   notebooks/0_prologue
-   notebooks/1_quantum_information_foundation
+   notebooks/1_foundations_of_quantum_information_science
    notebooks/2_introduction_to_quantum_algorithms
-   notebooks/3_execution_environments_of_quantum_algorithms
+   notebooks/3_programming_quantum_algorithms_with_quri_parts
    notebooks/4_quantum_dynamics_simulation
-   notebooks/5_VQC_based_algorithms
-   notebooks/6_quantum_chemistry_calculation
-   notebooks/7_quantum_phase_estimation
-   notebooks/8_quantum_search_algorithm
+   notebooks/5_variational_quantum_circuit_algorithms
+   notebooks/6_quantum_chemistry_with_nisq_algorithms
+   notebooks/7_applications_of_quantum_phase_estimation
+   notebooks/8_quantum_search_algorithms
    notebooks/9_quantum_error_correction
 
 
