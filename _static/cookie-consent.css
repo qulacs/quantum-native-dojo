@@ -1,0 +1,63 @@
+#qnd-cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background: rgba(0, 35, 55, 0.95);
+  color: #f0f0f0;
+  font-size: 14px;
+  line-height: 1.5;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.qnd-cookie-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.qnd-cookie-msg {
+  margin: 0;
+  flex: 1 1 400px;
+}
+
+.qnd-cookie-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.qnd-cookie-btn {
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.qnd-cookie-btn:hover {
+  opacity: 0.85;
+}
+
+.qnd-cookie-btn-accept {
+  background: #05c3a5;
+  color: #fff;
+}
+
+.qnd-cookie-btn-decline {
+  background: transparent;
+  color: #ccc;
+  border: 1px solid #666;
+}
+
+.qnd-cookie-btn-decline:hover {
+  color: #fff;
+  border-color: #999;
+}
