@@ -1,2 +1,14 @@
 {% extends "sphinx_rtd_theme/layout.html" %}
 {% set favicon = 'empty.ico' %}
+
+{% block extrahead %}
+<!-- Google Analytics (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PXKC2GPZF1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PXKC2GPZF1');
+</script>
+{{ super() }}
+{% endblock %}
