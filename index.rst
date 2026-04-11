@@ -54,6 +54,11 @@ Quantum Native Dojoの内容を理解するには、以下のような知識が�
 運営・サポート
 --------------
 
-運営： `株式会社QunaSys <https://qunasys.com>`_ 
+運営： `株式会社QunaSys <https://qunasys.com>`_
+
+.. image:: _static/qunasys_logo.svg
+   :alt: QunaSys
+   :target: https://qunasys.com
+   :width: 200px
 
 ご意見・ご要望・質問： `Qulacs Slack Community <https://join.slack.com/t/qulacs/shared_invite/enQtNzY1OTM5MDYxMjAxLWM1ZDc3MzdiNjZhZjdmYTQ5MTJiOTEzZjI3ZjAwZTg0OGFiNjcxY2VjZWRjMWY0YjE5ZTViOWQzZTliYzdmYzY>`_ にお寄せ下さい。
