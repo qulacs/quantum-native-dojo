@@ -87,6 +87,5 @@ if os.environ.get("READTHEDOCS", "") == "True":
     html_context["READTHEDOCS"] = True
 
 html_static_path = ['_static']
-html_js_files = ['sidebar-contact.js']     # ← 追加
-# # 任意: CSSも使うなら
-# html_css_files = ['custom.css']
+html_js_files = ['sidebar-contact.js', 'cookie-consent.js']
+html_css_files = ['cookie-consent.css']

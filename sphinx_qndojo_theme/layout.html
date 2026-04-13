@@ -1,2 +1,25 @@
 {% extends "sphinx_rtd_theme/layout.html" %}
 {% set favicon = 'empty.ico' %}
+
+{% block extrahead %}
+<!-- GA4: loaded only after cookie consent -->
+<script>
+  var QND_GA_ID = 'G-PXKC2GPZF1';
+  function qndLoadGA() {
+    if (document.querySelector('script[src*="googletagmanager"]')) return;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + QND_GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', QND_GA_ID);
+  }
+  // Auto-load if already consented
+  if (document.cookie.indexOf('qnd_cookie_consent=accepted') !== -1) {
+    qndLoadGA();
+  }
+</script>
+{{ super() }}
+{% endblock %}
