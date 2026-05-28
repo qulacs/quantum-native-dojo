@@ -16,9 +16,19 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   if (!parent) return;
 
+  var scripts = document.querySelectorAll('script[src*="sidebar-contact"]');
+  var staticBase = "";
+  if (scripts.length > 0) {
+    staticBase = scripts[0].src.replace(/sidebar-contact\.js.*$/, "");
+  }
+
   const box = document.createElement("div");
   box.className = "qns-contact";
-  box.innerHTML = 'ワークショップや<br>企業向けサポートのご相談は <a href="https://qunasys.com/contact/" target="_blank" rel="noopener">QunaSys</a> までお気軽にどうぞ。';
+  box.innerHTML =
+    'ワークショップや<br>企業向けサポートのご相談は <a href="https://qunasys.com/contact/" target="_blank" rel="noopener">QunaSys</a> までお気軽にどうぞ。' +
+    '<a href="https://qunasys.com/" target="_blank" rel="noopener">' +
+    '<img src="' + staticBase + 'qunasys_logo_dark.svg" alt="QunaSys" style="display:block; margin:8px auto 0; max-width:160px;">' +
+    '</a>';
   box.style.cssText =
     "margin:12px 8px 8px; padding:10px; border-top:1px solid #e5e7eb; text-align:center; font-size:0.9em;";
   parent.appendChild(box);
